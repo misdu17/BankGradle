@@ -4,9 +4,11 @@ package com.syful.framework.web.config;
 import com.syful.framework.web.browser.BrowserType;
 import com.syful.framework.web.exception.UnknownBrowserException;
 import com.syful.framework.web.exception.UnknownPropertyException;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.Reporter;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -128,15 +130,20 @@ public class Settings {
 
     private RemoteWebDriver getDriver(BrowserType browserType){
         try {
+
             switch (browserType){
                 case FIREFOX:
-                    URL remoteUrl = new URL("http://localhost:4444/wd/hub");
+                    System.setProperty("webdriver.gecko.driver", "/Users/Zakia/IntelliJProjects/BankGradle/geckodriver");
+                    URL remoteUrl = new URL("http://192.168.1.151:5555/wd/hub");
                     DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+                    capabilities.setCapability("marionette", true);
+                    capabilities.setBrowserName("firefox");
+                    capabilities.setPlatform(Platform.MAC);
                     return new RemoteWebDriver(remoteUrl, capabilities);
                 case IE:
                     return new InternetExplorerDriver();
                 case CHROME:
-                    remoteUrl = new URL("http://localhost:4444/wd/hub");
+                    remoteUrl = new URL("http://localhost:/wd/hub");
                     capabilities = DesiredCapabilities.chrome();
                     return new RemoteWebDriver(remoteUrl, capabilities);
                 default:

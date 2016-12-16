@@ -24,7 +24,7 @@ dependencies {
             ['org.mortbay.jetty:maven-jetty-plugin:6.1.26'],
             ['com.github.detro:phantomjsdriver:1.2.0'],
             ['io.appium:java-client:2.2.0'],
-            ['org.seleniumhq.selenium:selenium-java:2.52.0'],
+            ['org.seleniumhq.selenium:selenium-java:3.0.1'],
             ['org.testng:testng:6.9.4'],
             ['com.google.guava:guava:18.0'],
             ['com.google.code.findbugs:jsr305:3.0.0'],
