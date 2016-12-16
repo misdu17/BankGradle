@@ -134,7 +134,7 @@ public class Settings {
             switch (browserType){
                 case FIREFOX:
                     System.setProperty("webdriver.gecko.driver", "/Users/Zakia/IntelliJProjects/BankGradle/geckodriver");
-                    URL remoteUrl = new URL("http://192.168.1.151:5555/wd/hub");
+                    URL remoteUrl = new URL("http://localhost:4444/wd/hub");
                     DesiredCapabilities capabilities = DesiredCapabilities.firefox();
                     capabilities.setCapability("marionette", true);
                     capabilities.setBrowserName("firefox");
@@ -143,8 +143,11 @@ public class Settings {
                 case IE:
                     return new InternetExplorerDriver();
                 case CHROME:
-                    remoteUrl = new URL("http://localhost:/wd/hub");
+                    System.setProperty("webdriver.chrome.driver", "/Users/Zakia/IntelliJProjects/BankGradle/chromedriver");
+                    remoteUrl = new URL("http://localhost:4444/wd/hub");
                     capabilities = DesiredCapabilities.chrome();
+                    capabilities.setBrowserName("chrome");
+                    capabilities.setPlatform(Platform.MAC);
                     return new RemoteWebDriver(remoteUrl, capabilities);
                 default:
                     throw new UnknownBrowserException("Cannot create driver for unknown browser type.");
