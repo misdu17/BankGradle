@@ -14,6 +14,8 @@ public class LoginTestSuite {
     @WebTest(id = "1234", locationAccountName = "none")
     public void validLoginTest(){
 
-        MainPlatform.loginAs();
+        MainPlatform.loginAs()
+            .invalidLogin("invalid", "invalid")
+            .verifyAlertMessage("User or Password is not valid");
     }
 }

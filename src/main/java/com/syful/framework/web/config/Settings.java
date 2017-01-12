@@ -5,7 +5,9 @@ import com.syful.framework.web.browser.BrowserType;
 import com.syful.framework.web.exception.UnknownBrowserException;
 import com.syful.framework.web.exception.UnknownPropertyException;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Reporter;
@@ -139,6 +141,7 @@ public class Settings {
                     capabilities.setCapability("marionette", true);
                     capabilities.setBrowserName("firefox");
                     capabilities.setPlatform(Platform.MAC);
+                    capabilities.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
                     return new RemoteWebDriver(remoteUrl, capabilities);
                 case IE:
                     return new InternetExplorerDriver();
