@@ -173,6 +173,10 @@ public class Settings {
         return groups;
     }
 
+    public String getRevision() {
+        return String.format("https://%s", stagingUrl);
+    }
+
     public static String getSqlAutomationServerConnection() {
         return sqlAutomationServerConnection;
     }

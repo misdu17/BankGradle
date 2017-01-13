@@ -4,6 +4,7 @@ package com.syful.framework.adapters;
 import com.syful.framework.annotations.WebTest;
 import com.syful.framework.web.config.Settings;
 import com.syful.framework.web.platform.utilities.ReportUtils;
+import com.testrail.rest.TestRailApi;
 import org.apache.commons.io.FileUtils;
 import org.apache.velocity.VelocityContext;
 import org.codehaus.groovy.runtime.DefaultGroovyMethods;
@@ -28,8 +29,10 @@ public class MainTestSessionListener extends HTMLReporter implements ITestListen
     private static final String BROWSER = "browser";
     private static final String TESTPLAN = "testPlan";
     private static final String GROUPS = "groups";
+
     private static final ReportUtils REPORT_UTILS = new ReportUtils();
     protected Settings settings = new Settings();
+    TestRailApi testRailApi = new TestRailApi();
 
     protected VelocityContext createContext() {
         final VelocityContext context = super.createContext();
@@ -73,7 +76,7 @@ public class MainTestSessionListener extends HTMLReporter implements ITestListen
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        //testRailApi.updateTestStatusInTestPlan(result);
+        testRailApi.updateTestStatusInTestPlan(result);
         //BookerPlatform.cleanLocation();
         if(result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(WebTest.class) != null){
             GridManager.getDriver().close();
@@ -84,7 +87,7 @@ public class MainTestSessionListener extends HTMLReporter implements ITestListen
 
     @Override
     public void onTestFailure(ITestResult result) {
-        //testRailApi.updateTestStatusInTestPlan(result);
+        testRailApi.updateTestStatusInTestPlan(result);
         //BookerPlatform.cleanLocation();
         if (result.getMethod().getConstructorOrMethod().getMethod().getAnnotation(WebTest.class) != null) {
             reportLogScreenshot(String.format("%s.%s", result.getInstanceName(), result.getName()));
@@ -96,7 +99,7 @@ public class MainTestSessionListener extends HTMLReporter implements ITestListen
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        //testRailApi.updateTestStatusInTestPlan(result);
+        testRailApi.updateTestStatusInTestPlan(result);
         //BookerPlatform.cleanLocation();
 
     }
