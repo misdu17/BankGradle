@@ -1,12 +1,12 @@
-package com.testrail.rest;
+package com.testcaseapi.rest;
 
 import com.google.gson.Gson;
 import com.syful.framework.annotations.Apitest;
 import com.syful.framework.annotations.WebTest;
 import com.syful.framework.web.config.Settings;
 import com.syful.framework.web.platform.utilities.DateTimeFormatter;
-import com.testrail.models.*;
-import com.testrail.references.TestRailApiReferences;
+import com.testcaseapi.models.*;
+import com.testcaseapi.references.TestCaseApiReferences;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.poi.openxml4j.exceptions.InvalidOperationException;
 import org.testng.Assert;
@@ -20,11 +20,11 @@ import java.util.List;
 /**
  * Created by Zakia on 1/12/17.
  */
-public class TestRailApi extends Base {
+public class TestCaseApi extends Base {
     private static Gson jsonParser = new Gson();
     Settings settings = new Settings();
 
-    public TestRailApi(){
+    public TestCaseApi(){
         try {
             AuthInfo = Base64.encodeBase64String(AUTH.getBytes("UTF-8"));
         }catch (UnsupportedEncodingException e){
@@ -36,7 +36,7 @@ public class TestRailApi extends Base {
      * Returns an existing test plan from TestRail by specified ID
      */
     public Plan getPlan(String testPlanId){
-        HttpURLConnection request = createGetRequest(TestRailApiReferences.getPlan, testPlanId);
+        HttpURLConnection request = createGetRequest(TestCaseApiReferences.getPlan, testPlanId);
         String response = makeRawRequest(request);
         Plan plan = jsonParser.fromJson(response, Plan.class);
 
@@ -50,7 +50,7 @@ public class TestRailApi extends Base {
     public Test[] getTests(int runId) {
         HttpURLConnection request;
         try {
-            request = createGetRequest(TestRailApiReferences.getTest, runId);
+            request = createGetRequest(TestCaseApiReferences.getTest, runId);
             String response = makeRawRequest(request);
             Test[] tests = jsonParser.fromJson(response, Test[].class);
             if (tests != null) return tests;
@@ -65,7 +65,7 @@ public class TestRailApi extends Base {
      * Returns list of cases for specific test suite by suite ID
      */
     public List<Case> getCases(int suiteId) throws IOException {
-        HttpURLConnection request = createGetRequest(TestRailApiReferences.getCases, String.format("1&suite_id=%s", suiteId));
+        HttpURLConnection request = createGetRequest(TestCaseApiReferences.getCases, String.format("1&suite_id=%s", suiteId));
         String response = makeRawRequest(request);
 
         List<Case> cases = (List<Case>) jsonParser.fromJson(response, Case.class);
@@ -157,7 +157,7 @@ public class TestRailApi extends Base {
                             automationTestResult.getStatusId(), automationTestResult.getRevision(), automationTestResult.getElapsed(),
                             automationTestResult.getComment());
 
-            HttpURLConnection postRequest = createPostRequest(TestRailApiReferences.addResult, automationTestResult.getDynamicCaseId(), body);
+            HttpURLConnection postRequest = createPostRequest(TestCaseApiReferences.addResult, automationTestResult.getDynamicCaseId(), body);
             String response = makeRawRequest(postRequest);
             Assert.assertTrue(response.contains(automationTestResult.getDynamicCaseId()), "Response does not contain info about update status");
             System.out.println("Sending test case status has passed");

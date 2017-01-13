@@ -1,16 +1,15 @@
-package com.testrail.models;
+package com.testcaseapi.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
 
 /**
  * Created by Zakia on 1/12/17.
  */
-public class Run {
+public class Plan {
     @JsonProperty("id")
     public int id;
-
-    @JsonProperty("suite_id")
-    public int suite_id;
 
     @JsonProperty("name")
     public String name;
@@ -25,7 +24,7 @@ public class Run {
     public int milestone_id;
 
     @JsonProperty("passed_count")
-    public int passed_count;
+    public Integer passed_count;
 
     @JsonProperty("blocked_count")
     public int blocked_count;
@@ -39,9 +38,5 @@ public class Run {
     @JsonProperty("failed_count")
     public int failed_count;
 
-    @JsonProperty("plan_id")
-    public int plan_id;
-
-    @JsonProperty("url")
-    public String url;
+    public List<Entry> entries;
 }

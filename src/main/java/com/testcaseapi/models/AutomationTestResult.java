@@ -1,4 +1,4 @@
-package com.testrail.models;
+package com.testcaseapi.models;
 
 
 

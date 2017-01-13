@@ -1,4 +1,4 @@
-package com.testrail.rest;
+package com.testcaseapi.rest;
 
 import java.io.BufferedReader;
 import java.io.IOException;

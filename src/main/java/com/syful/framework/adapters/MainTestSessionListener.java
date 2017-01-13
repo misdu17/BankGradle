@@ -4,7 +4,7 @@ package com.syful.framework.adapters;
 import com.syful.framework.annotations.WebTest;
 import com.syful.framework.web.config.Settings;
 import com.syful.framework.web.platform.utilities.ReportUtils;
-import com.testrail.rest.TestRailApi;
+import com.testcaseapi.rest.TestCaseApi;
 import org.apache.commons.io.FileUtils;
 import org.apache.velocity.VelocityContext;
 import org.codehaus.groovy.runtime.DefaultGroovyMethods;
@@ -32,7 +32,7 @@ public class MainTestSessionListener extends HTMLReporter implements ITestListen
 
     private static final ReportUtils REPORT_UTILS = new ReportUtils();
     protected Settings settings = new Settings();
-    TestRailApi testRailApi = new TestRailApi();
+    TestCaseApi testRailApi = new TestCaseApi();
 
     protected VelocityContext createContext() {
         final VelocityContext context = super.createContext();
