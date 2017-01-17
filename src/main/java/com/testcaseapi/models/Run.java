@@ -2,9 +2,7 @@ package com.testcaseapi.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Created by Zakia on 1/12/17.
- */
+
 public class Run {
     @JsonProperty("id")
     public int id;

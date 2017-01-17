@@ -4,9 +4,6 @@ import com.syful.framework.web.config.Settings;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-/**
- * Created by Zakia on 1/11/17.
- */
 public class FalseFailAnalyzer implements IRetryAnalyzer {
     private int count = 0;
 

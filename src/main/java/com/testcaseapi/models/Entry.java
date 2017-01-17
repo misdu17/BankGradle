@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-/**
- * Created by Zakia on 1/12/17.
- */
+
 public class Entry {
     @JsonProperty("id")
     public String id;

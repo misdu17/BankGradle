@@ -17,9 +17,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.util.List;
 
-/**
- * Created by Zakia on 1/12/17.
- */
 public class TestCaseApi extends Base {
     private static Gson jsonParser = new Gson();
     Settings settings = new Settings();

@@ -7,9 +7,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by Zakia on 1/12/17.
- */
 public class Base {
     protected static final String AUTH = "authentication string";
     protected static final String API_BASE = "API base URL";

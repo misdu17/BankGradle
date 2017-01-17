@@ -3,9 +3,7 @@ package com.syful.framework.web.platform.utilities;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Zakia on 1/12/17.
- */
+
 public class QueryBuilder {
     private List<String> columns = new ArrayList<>();
     private List<String> tables = new ArrayList<>();

@@ -1,8 +1,6 @@
 package com.testcaseapi.models;
 
-/**
- * Created by Zakia on 1/12/17.
- */
+
 public class Case {
     public int id;
 

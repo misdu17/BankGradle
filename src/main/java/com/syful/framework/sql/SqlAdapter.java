@@ -9,9 +9,6 @@ import org.testng.Reporter;
 import java.lang.reflect.Method;
 import java.sql.*;
 
-/**
- * Created by Zakia on 1/16/17.
- */
 public class SqlAdapter {
 
     private final static String jdbcDriver = "net.sourceforge.jtds.jdbc.Driver";

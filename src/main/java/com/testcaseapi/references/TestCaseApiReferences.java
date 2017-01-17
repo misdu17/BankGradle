@@ -1,8 +1,6 @@
 package com.testcaseapi.references;
 
-/**
- * Created by Zakia on 1/12/17.
- */
+
 public class TestCaseApiReferences {
     //Returns an existing test plan
     public static String getPlan = "get_plan";

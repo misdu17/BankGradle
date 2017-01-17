@@ -1,10 +1,6 @@
 package com.testcaseapi.models;
 
 
-
-/**
- * Created by Zakia on 1/12/17.
- */
 public class AutomationTestResult {
     private String testId;
     private int statusId;
